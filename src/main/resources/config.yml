@@ -1,0 +1,273 @@
+STORAGE:
+  # Available types: SQLITE, MYSQL, MONGODB
+  TYPE: "SQLITE"
+  SQLITE:
+    FILE: "database.db"
+  MYSQL:
+    HOST: "127.0.0.1"
+    PORT: 3306
+    DATABASE: "advent_calendar"
+    USERNAME: "root"
+    PASSWORD: "password"
+    POOL_SIZE: 10
+    PROPERTIES: "useSSL=false&autoReconnect=true&characterEncoding=utf8"
+  MONGODB:
+    URI: "mongodb://127.0.0.1:27017"
+    DATABASE: "advent_calendar"
+    COLLECTION: "players"
+
+SETTINGS:
+  TIMEZONE: "America/New_York"
+  MONTH: 12
+  START_DAY: 1
+  TOTAL_DAYS: 28
+  ALLOW_PAST_DAYS_CLAIM: false
+  JOIN_REMINDER: true
+  JOIN_REMINDER_DELAY_TICKS: 40
+
+MESSAGES:
+  CLAIMED: "&#6BF18DYou have claimed the reward for &eDay #%day%&a!"
+  ALREADY_CLAIMED: "&7You have already claimed &#6BF18DDay #%day%&7."
+  LOCKED: "&cDay &e#%day% &cis locked! Unlocks in &e%countdown%&c."
+  EXPIRED: "&cDay &e#%day% &chas expired and can no longer be claimed!"
+  NOT_ACTIVE_MONTH: "&cThe Advent Calendar is currently not active!"
+  JOIN_REMINDER: "&eYou have unclaimed Advent Calendar rewards for &6Day #%day%&e! Use &6/calendar &eto claim!"
+  RELOADED: "&#6BF18DAdventCalendar configuration reloaded successfully."
+  RESET_PLAYER: "&#6BF18DReset Advent Calendar progress for &e%player%&#6BF18D."
+  RESET_ALL: "&#6BF18DReset Advent Calendar progress for &eall players&#6BF18D."
+  FORCE_DAY: "&#6BF18DUpdated &e%player%&#6BF18D's Day &e#%day% &#6BF18Dstatus."
+
+MENU:
+  TITLE: "&8ᴀᴅᴠᴇɴᴛ ᴄᴀʟᴇɴᴅᴀʀ"
+  SIZE: 54
+  AUTO_UPDATE: true
+
+  FILLER:
+    ENABLED: true
+    MATERIAL: "BLACK_STAINED_GLASS_PANE"
+    TEXTURE: ""
+    NAME: " "
+    LORE: []
+    SLOTS: []
+
+  STATES:
+    AVAILABLE:
+      MATERIAL: "PLAYER_HEAD"
+      TEXTURE: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjJiN2I5ZTA3YzM1MGJjZDY2MmJjZjNmMTYyNGE1OGU5NjVhNzZlYTAxOTE2ZGQzM2M0NzViZDFmYzg2OTQ3YiJ9fX0="
+      NAME: "&#6BF18Dᴅᴀʏ #%day% &7(Available)"
+      LORE:
+        - "&7Rewards:"
+        - "%rewards%"
+        - ""
+        - "&a&lCLICK TO CLAIM!"
+      GLOW: true
+
+    CLAIMED:
+      MATERIAL: "MINECART"
+      TEXTURE: ""
+      NAME: "&#6BF18Dᴅᴀʏ #%day% &e(Claimed)"
+      LORE:
+        - "&7Rewards:"
+        - "%rewards%"
+        - ""
+        - "&a✔ You already claimed this reward!"
+      GLOW: false
+
+    LOCKED:
+      MATERIAL: "PLAYER_HEAD"
+      TEXTURE: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjJiN2I5ZTA3YzM1MGJjZDY2MmJjZjNmMTYyNGE1OGU5NjVhNzZlYTAxOTE2ZGQzM2M0NzViZDFmYzg2OTQ3YiJ9fX0="
+      NAME: "&cᴅᴀʏ #%day% &7(ʟᴏᴄᴋᴇᴅ)"
+      LORE:
+        - "&7Rewards:"
+        - "%rewards%"
+        - ""
+        - "&7Unlocks in: &e%countdown%"
+      GLOW: false
+
+    EXPIRED:
+      MATERIAL: "COAL_BLOCK"
+      TEXTURE: ""
+      NAME: "&cᴅᴀʏ #%day% &7(Expired)"
+      LORE:
+        - "&7Rewards:"
+        - "%rewards%"
+        - ""
+        - "&c✖ You missed this day!"
+      GLOW: false
+
+DAYS:
+  "1":
+    SLOT: 10
+    DESCRIPTION:
+      - " &8• &b2x Diamond"
+      - " &8• &a$1,000 Coins"
+    COMMANDS:
+      - "give %player% diamond 2"
+  "2":
+    SLOT: 11
+    DESCRIPTION:
+      - " &8• &64x Golden Apple"
+    COMMANDS:
+      - "give %player% golden_apple 4"
+  "3":
+    SLOT: 12
+    DESCRIPTION:
+      - " &8• &a8x Emerald"
+    COMMANDS:
+      - "give %player% emerald 8"
+  "4":
+    SLOT: 13
+    DESCRIPTION:
+      - " &8• &b16x Experience Bottle"
+    COMMANDS:
+      - "give %player% experience_bottle 16"
+  "5":
+    SLOT: 14
+    DESCRIPTION:
+      - " &8• &b4x Diamond"
+    COMMANDS:
+      - "give %player% diamond 4"
+  "6":
+    SLOT: 15
+    DESCRIPTION:
+      - " &8• &d1x Netherite Scrap"
+    COMMANDS:
+      - "give %player% netherite_scrap 1"
+  "7":
+    SLOT: 16
+    DESCRIPTION:
+      - " &8• &61x Enchanted Golden Apple"
+    COMMANDS:
+      - "give %player% enchanted_golden_apple 1"
+  "8":
+    SLOT: 19
+    DESCRIPTION:
+      - " &8• &b6x Diamond"
+    COMMANDS:
+      - "give %player% diamond 6"
+  "9":
+    SLOT: 20
+    DESCRIPTION:
+      - " &8• &a12x Emerald"
+    COMMANDS:
+      - "give %player% emerald 12"
+  "10":
+    SLOT: 21
+    DESCRIPTION:
+      - " &8• &e8x Gold Block"
+    COMMANDS:
+      - "give %player% gold_block 8"
+  "11":
+    SLOT: 22
+    DESCRIPTION:
+      - " &8• &b32x Experience Bottle"
+    COMMANDS:
+      - "give %player% experience_bottle 32"
+  "12":
+    SLOT: 23
+    DESCRIPTION:
+      - " &8• &d2x Netherite Scrap"
+    COMMANDS:
+      - "give %player% netherite_scrap 2"
+  "13":
+    SLOT: 24
+    DESCRIPTION:
+      - " &8• &b8x Diamond"
+    COMMANDS:
+      - "give %player% diamond 8"
+  "14":
+    SLOT: 25
+    DESCRIPTION:
+      - " &8• &51x Totem of Undying"
+    COMMANDS:
+      - "give %player% totem_of_undying 1"
+  "15":
+    SLOT: 28
+    DESCRIPTION:
+      - " &8• &b10x Diamond"
+    COMMANDS:
+      - "give %player% diamond 10"
+  "16":
+    SLOT: 29
+    DESCRIPTION:
+      - " &8• &a16x Emerald"
+    COMMANDS:
+      - "give %player% emerald 16"
+  "17":
+    SLOT: 30
+    DESCRIPTION:
+      - " &8• &68x Golden Apple"
+    COMMANDS:
+      - "give %player% golden_apple 8"
+  "18":
+    SLOT: 31
+    DESCRIPTION:
+      - " &8• &b48x Experience Bottle"
+    COMMANDS:
+      - "give %player% experience_bottle 48"
+  "19":
+    SLOT: 32
+    DESCRIPTION:
+      - " &8• &d3x Netherite Scrap"
+    COMMANDS:
+      - "give %player% netherite_scrap 3"
+  "20":
+    SLOT: 33
+    DESCRIPTION:
+      - " &8• &b2x Diamond Block"
+    COMMANDS:
+      - "give %player% diamond_block 2"
+  "21":
+    SLOT: 34
+    DESCRIPTION:
+      - " &8• &62x Enchanted Golden Apple"
+    COMMANDS:
+      - "give %player% enchanted_golden_apple 2"
+  "22":
+    SLOT: 37
+    DESCRIPTION:
+      - " &8• &b16x Diamond"
+    COMMANDS:
+      - "give %player% diamond 16"
+  "23":
+    SLOT: 38
+    DESCRIPTION:
+      - " &8• &a32x Emerald"
+    COMMANDS:
+      - "give %player% emerald 32"
+  "24":
+    SLOT: 39
+    DESCRIPTION:
+      - " &8• &d1x Netherite Ingot"
+    COMMANDS:
+      - "give %player% netherite_ingot 1"
+  "25":
+    SLOT: 40
+    DESCRIPTION:
+      - " &8• &63x Enchanted Golden Apple"
+      - " &8• &d1x Netherite Ingot"
+    COMMANDS:
+      - "give %player% enchanted_golden_apple 3"
+      - "give %player% netherite_ingot 1"
+  "26":
+    SLOT: 41
+    DESCRIPTION:
+      - " &8• &b4x Diamond Block"
+    COMMANDS:
+      - "give %player% diamond_block 4"
+  "27":
+    SLOT: 42
+    DESCRIPTION:
+      - " &8• &d2x Netherite Ingot"
+    COMMANDS:
+      - "give %player% netherite_ingot 2"
+  "28":
+    SLOT: 43
+    DESCRIPTION:
+      - " &8• &d1x Netherite Block"
+      - " &8• &b8x Diamond Block"
+      - " &8• &64x Enchanted Golden Apple"
+    COMMANDS:
+      - "give %player% netherite_block 1"
+      - "give %player% diamond_block 8"
+      - "give %player% enchanted_golden_apple 4"
